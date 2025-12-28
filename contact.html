@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Contáctanos - Manu Toys. Estamos aquí para ayudarte a encontrar tu próximo coleccionable">
+    <title>Contacto - Manu Toys</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="resources/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="resources/images/Logos/mt naranja.PNG">
+</head>
+
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                    <img src="resources/images/Logos/mt blanco.png" alt="Manu Toys Logo" class="logo">
+                    <span
+                        style="font-family: var(--font-primary); font-size: 1.5rem; font-weight: 700; color: #fff;">Manu
+                        Toys</span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    ☰
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Hero -->
+    <section class="hero" style="min-height: 50vh; padding-top: 100px;">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ponte en <span class="text-gradient">Contacto</span></h1>
+                <p>Estamos aquí para ayudarte a encontrar tu próximo coleccionable</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-2xl); align-items: start;">
+
+                <!-- Contact Form -->
+                <div class="fade-in"
+                    style="background: var(--bg-card); border-radius: var(--radius-xl); padding: var(--spacing-xl); border: 1px solid var(--border-color);">
+                    <h2 style="margin-bottom: var(--spacing-md);">Envíanos un Mensaje</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: var(--spacing-xl);">
+                        Completa el formulario y nos pondremos en contacto contigo lo antes posible
+                    </p>
+
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nombre Completo *</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Tu nombre"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Correo Electrónico *</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Teléfono (Opcional)</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+52 123 456 7890">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Asunto</label>
+                            <input type="text" id="subject" name="subject" class="form-input"
+                                placeholder="¿En qué podemos ayudarte?">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Mensaje *</label>
+                            <textarea id="message" name="message" class="form-textarea"
+                                placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <div class="fade-in"
+                        style="background: var(--bg-card); border-radius: var(--radius-lg); padding: var(--spacing-xl); border: 1px solid var(--border-color); margin-bottom: var(--spacing-xl);">
+                        <h3 style="color: var(--primary-orange); margin-bottom: var(--spacing-md);">Información de
+                            Contacto</h3>
+
+                        <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+
+                            <div style="display: flex; gap: var(--spacing-md); align-items: start;">
+                                <div
+                                    style="width: 48px; height: 48px; background: var(--bg-dark); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+                                    📝
+                                </div>
+                                <div>
+                                    <h4 style="color: var(--text-primary); margin-bottom: 0.25rem; font-size: 1rem;">
+                                        Contacto Directo</h4>
+                                    <p style="color: var(--text-secondary); margin: 0;">Para consultas y pedidos,
+                                        contáctanos a través de nuestras redes sociales oficiales.</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: var(--spacing-md); align-items: start;">
+                                <div
+                                    style="width: 48px; height: 48px; background: var(--bg-dark); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+                                    ⏰
+                                </div>
+                                <div>
+                                    <h4 style="color: var(--text-primary); margin-bottom: 0.25rem; font-size: 1rem;">
+                                        Horario de Atención</h4>
+                                    <p style="color: var(--text-secondary); margin: 0;">Lunes a Sábado<br>9:00 AM - 7:00
+                                        PM</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="fade-in"
+                        style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 107, 53, 0.05)); border-radius: var(--radius-lg); padding: var(--spacing-xl); border: 2px solid var(--primary-orange);">
+                        <h3 style="color: var(--primary-orange); margin-bottom: var(--spacing-md);">Síguenos en Redes
+                            Sociales</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: var(--spacing-md);">
+                            Mantente al día con nuestras últimas novedades y nuevos modelos disponibles
+                        </p>
+
+                        <div class="social-links" style="justify-content: flex-start;">
+                            <a href="https://www.facebook.com/manu.toys/" target="_blank" rel="noopener noreferrer"
+                                class="social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/manu._.toys/" target="_blank" rel="noopener noreferrer"
+                                class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@manu._.toys" target="_blank" rel="noopener noreferrer"
+                                class="social-link" aria-label="TikTok">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" style="background: var(--bg-dark-secondary);">
+        <div class="container-narrow">
+            <div class="text-center fade-in" style="margin-bottom: var(--spacing-2xl);">
+                <h2>Preguntas Frecuentes</h2>
+                <p style="color: var(--text-secondary); font-size: 1.125rem;">Aquí respondemos las dudas más comunes</p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+
+                <div class="fade-in"
+                    style="background: var(--bg-card); border-radius: var(--radius-md); padding: var(--spacing-lg); border: 1px solid var(--border-color);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-sm);">¿Los productos son
+                        originales?</h4>
+                    <p style="color: var(--text-secondary); margin: 0;">
+                        Absolutamente. Todos nuestros modelos son 100% originales y certificados.
+                        Trabajamos directamente con distribuidores autorizados.
+                    </p>
+                </div>
+
+                <div class="fade-in"
+                    style="background: var(--bg-card); border-radius: var(--radius-md); padding: var(--spacing-lg); border: 1px solid var(--border-color);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-sm);">¿Hacen envíos?</h4>
+                    <p style="color: var(--text-secondary); margin: 0;">
+                        Sí, realizamos envíos a toda la república. Contáctanos para conocer
+                        las opciones de envío y costos según tu ubicación.
+                    </p>
+                </div>
+
+                <div class="fade-in"
+                    style="background: var(--bg-card); border-radius: var(--radius-md); padding: var(--spacing-lg); border: 1px solid var(--border-color);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-sm);">¿Puedo ver los modelos
+                        en persona?</h4>
+                    <p style="color: var(--text-secondary); margin: 0;">
+                        Puedes coordinar una cita para ver nuestros modelos disponibles.
+                        Contáctanos para programar tu visita.
+                    </p>
+                </div>
+
+                <div class="fade-in"
+                    style="background: var(--bg-card); border-radius: var(--radius-md); padding: var(--spacing-lg); border: 1px solid var(--border-color);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-sm);">¿Tienen más modelos
+                        disponibles?</h4>
+                    <p style="color: var(--text-secondary); margin: 0;">
+                        Nuestro inventario se actualiza constantemente. Si buscas un modelo
+                        específico que no ves en la página, contáctanos y te ayudaremos a encontrarlo.
+                    </p>
+                </div>
+
+                <div class="fade-in"
+                    style="background: var(--bg-card); border-radius: var(--radius-md); padding: var(--spacing-lg); border: 1px solid var(--border-color);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-sm);">¿Cuándo tendrán Hot
+                        Wheels disponibles?</h4>
+                    <p style="color: var(--text-secondary); margin: 0;">
+                        Estamos trabajando en ampliar nuestra colección con Hot Wheels.
+                        Síguenos en redes sociales para ser el primero en enterarte cuando estén disponibles.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div
+                        style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: var(--spacing-md);">
+                        <img src="resources/images/Logos/mt blanco.png" alt="Manu Toys" style="height: 60px;">
+                        <span
+                            style="font-family: var(--font-primary); font-size: 1.8rem; font-weight: 700; color: #fff;">Manu
+                            Toys</span>
+                    </div>
+                    <p>Coleccionables de alta calidad para verdaderos entusiastas del automovilismo.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <a href="index.html">Inicio</a>
+                    <a href="products.html">Productos</a>
+                    <a href="about.html">Nosotros</a>
+                    <a href="contact.html">Contacto</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Categorías</h3>
+                    <a href="products.html">MINI GT</a>
+                    <a href="products.html">Hot Wheels (Próximamente)</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>Contáctanos por Facebook, Instagram o TikTok</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/manu.toys/" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/manu._.toys/" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@manu._.toys" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Manu Toys. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="resources/js/script.js"></script>
+
+</body>
+
+</html>

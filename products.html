@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explora nuestra colección de MINI GT y Hot Wheels - Modelos a escala de alta calidad">
+    <title>Productos - Manu Toys</title>
+
+    <!-- Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="resources/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="resources/images/Logos/mt naranja.PNG">
+</head>
+
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                    <img src="resources/images/Logos/mt blanco.png" alt="Manu Toys Logo" class="logo">
+                    <span
+                        style="font-family: var(--font-primary); font-size: 1.5rem; font-weight: 700; color: #fff;">Manu
+                        Toys</span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    ☰
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Products Hero -->
+    <section class="hero" style="min-height: 50vh; padding-top: 100px;">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Nuestra <span class="text-gradient">Colección</span></h1>
+                <p>Descubre modelos exclusivos de las mejores marcas del mundo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section">
+        <div class="container">
+
+            <!-- Search Bar -->
+            <div class="search-container fade-in">
+                <input type="text" id="productSearch" placeholder="🔍 Buscar modelo, número o descripción..."
+                    aria-label="Buscar productos">
+            </div>
+
+            <!-- Category Filters -->
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="mini-gt">
+                    🏎️ MINI GT
+                </button>
+                <button class="filter-btn disabled" data-category="hot-wheels" disabled>
+                    🔥 Hot Wheels (Próximamente)
+                </button>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productsGrid" class="products-grid">
+                <!-- Products will be rendered here by JavaScript -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Cerrar">×</button>
+
+            <!-- Image Gallery -->
+            <div class="modal-gallery">
+                <img id="modalMainImage" src="" alt="Product" class="main-image">
+                <div id="modalThumbnails" class="thumbnail-container">
+                    <!-- Thumbnails will be rendered here -->
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="modal-details">
+                <div id="modalProductNumber" class="product-number">#000</div>
+                <h2 id="modalProductName">Product Name</h2>
+                <p id="modalProductDescription"
+                    style="color: var(--primary-orange); font-size: 1rem; font-weight: 600; margin-bottom: var(--spacing-md);">
+                    Description</p>
+                <p style="color: var(--text-secondary); line-height: 1.8;">
+                    Modelo a escala 1:64 de alta precisión. Réplica detallada con acabados premium,
+                    ideal para coleccionistas exigentes. Incluye detalles auténticos del vehículo original.
+                </p>
+
+                <div
+                    style="margin-top: var(--spacing-xl); padding-top: var(--spacing-xl); border-top: 1px solid var(--border-color);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-sm);">Características:</h4>
+                    <ul style="color: var(--text-secondary); line-height: 2;">
+                        <li>✓ Escala 1:64</li>
+                        <li>✓ Detalles ultra realistas</li>
+                        <li>✓ Acabados de alta calidad</li>
+                        <li>✓ Perfecto para coleccionistas</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: var(--spacing-xl); display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                    <a href="contact.html" class="btn btn-primary" style="flex: 1;">
+                        Consultar Disponibilidad
+                    </a>
+                    <button class="btn btn-secondary" onclick="closeModal()" style="flex: 1;">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div
+                        style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: var(--spacing-md);">
+                        <img src="resources/images/Logos/mt blanco.png" alt="Manu Toys" style="height: 60px;">
+                        <span
+                            style="font-family: var(--font-primary); font-size: 1.8rem; font-weight: 700; color: #fff;">Manu
+                            Toys</span>
+                    </div>
+                    <p>Coleccionables de alta calidad para verdaderos entusiastas del automovilismo.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <a href="index.html">Inicio</a>
+                    <a href="products.html">Productos</a>
+                    <a href="about.html">Nosotros</a>
+                    <a href="contact.html">Contacto</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Categorías</h3>
+                    <a href="products.html">MINI GT</a>
+                    <a href="products.html">Hot Wheels (Próximamente)</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>Contáctanos por Facebook, Instagram o TikTok</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/manu.toys/" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/manu._.toys/" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@manu._.toys" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Manu Toys. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="resources/js/script.js"></script>
+
+</body>
+
+</html>
