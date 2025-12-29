@@ -20,6 +20,7 @@ const products = [
     id: 702,
     category: 'mini-gt',
     name: 'Nissan Skyline Kenmeri Liberty Walk',
+    isLowStock: true, // Low Stock
     description: 'White',
     images: [
       'resources/images/Productos/MINI GT/702 Nissan Skyline Kenmeri Liberty Walk (White)/702.jpeg',
@@ -56,6 +57,7 @@ const products = [
     id: 759,
     category: 'mini-gt',
     name: 'Nissan Skyline GT-R R34 V-Spec',
+    isMostWanted: true, // Most Wanted
     description: 'Bayside Blue',
     images: [
       'resources/images/Productos/MINI GT/759 Nissan Skyline GT-R R34 V-Spec (Bayside Blue)/759.jpg',
@@ -151,6 +153,7 @@ const products = [
     id: 871,
     category: 'mini-gt',
     name: 'Hyundai i20 N Rally1 Hybrid #11',
+    isMostWanted: true,
     description: '2024 Rallye Monte-Carlo Winner',
     images: [
       'resources/images/Productos/MINI%20GT/871%20Hyundai%20i20%20N%20Rally1%20Hybrid%20%2311%202024%20Rallye%20Monte-Carlo%20Winner/871.jpeg',
@@ -314,6 +317,7 @@ const products = [
     id: 2011,
     category: 'hot-wheels',
     name: 'Koenigsegg Jesko (2020)',
+    isMostWanted: true,
     description: 'Blue Grey',
     images: ['resources/images/Productos/Hot Wheels/2020 KOENIGSEGG JESKO – Blue Grey – .jpeg']
   },
@@ -328,6 +332,7 @@ const products = [
     id: 2006,
     category: 'hot-wheels',
     name: 'Cadillac Project GTP Hypercar',
+    isLowStock: true,
     description: 'Red',
     images: ['resources/images/Productos/Hot Wheels/CADILLAC PROJECT GTP HYPERCAR:HYPERVOITURE – Red –.jpeg']
   },
@@ -356,6 +361,7 @@ const products = [
     id: 2014,
     category: 'hot-wheels',
     name: 'Ford Mustang Dark Horse',
+    isMostWanted: true,
     description: 'White',
     images: ['resources/images/Productos/Hot Wheels/FORD MUSTANG DARK HORSE – White – .jpeg']
   },
@@ -384,6 +390,7 @@ const products = [
     id: 2001,
     category: 'hot-wheels',
     name: 'Porsche 904 Carrera GTS',
+    isLowStock: true,
     description: 'Black',
     images: ['resources/images/Productos/Hot Wheels/PORSCHE 904 CARRERA GTS – Black – .jpeg']
   },
@@ -412,6 +419,7 @@ const products = [
     id: 2016,
     category: 'hot-wheels',
     name: '\'75 Chevy Blazer Custom',
+    isLowStock: true,
     description: 'White',
     images: ['resources/images/Productos/Hot Wheels/‘75 CHEVY BLAZER CUSTOM – White – .jpeg']
   }
@@ -424,6 +432,7 @@ let currentProduct = null;
 let currentImageIndex = 0;
 let slideInterval = null;
 let activeCategory = 'mini-gt'; // Global state for category
+let currentView = 'grid';      // 'grid' or 'list'
 
 // ===================================
 // Header Scroll Effect
@@ -508,7 +517,20 @@ function renderProducts() {
   const productsGrid = document.getElementById('productsGrid');
   if (!productsGrid) return;
 
-  // Get Search Query
+  // Apply current view class
+  if (currentView === 'list') {
+    productsGrid.classList.add('list-view');
+  } else {
+    productsGrid.classList.remove('list-view');
+  }
+
+  // Sync button states
+  const gridBtn = document.getElementById('gridViewBtn');
+  const listBtn = document.getElementById('listViewBtn');
+  if (gridBtn && listBtn) {
+    gridBtn.classList.toggle('active', currentView === 'grid');
+    listBtn.classList.toggle('active', currentView === 'list');
+  }
   const searchInput = document.getElementById('productSearch');
   const searchQuery = searchInput ? searchInput.value.toLowerCase().trim() : '';
 
@@ -551,6 +573,28 @@ function renderProducts() {
   initScrollAnimations();
 }
 
+// View Toggle listeners
+function initViewToggleListeners() {
+  const gridBtn = document.getElementById('gridViewBtn');
+  const listBtn = document.getElementById('listViewBtn');
+  const productsGrid = document.getElementById('productsGrid'); // Renamed from 'grid' to avoid confusion and match existing usage
+
+  if (gridBtn && listBtn && productsGrid) {
+    gridBtn.addEventListener('click', () => {
+      if (currentView === 'grid') return;
+      currentView = 'grid';
+      renderProducts();
+    });
+
+    listBtn.addEventListener('click', () => {
+      if (currentView === 'list') return;
+      currentView = 'list';
+      renderProducts();
+    });
+  }
+}
+
+
 function showSkeletons() {
   const productsGrid = document.getElementById('productsGrid');
   if (!productsGrid) return;
@@ -574,12 +618,23 @@ function showSkeletons() {
 
 function createProductCard(product, index) {
   const card = document.createElement('div');
+
+  // Determine badge type and text
+  let badgeHTML = '';
+  if (product.isNew) {
+    badgeHTML = '<span class="product-badge badge-novedad">¡Novedad!</span>';
+  } else if (product.isMostWanted) {
+    badgeHTML = '<span class="product-badge badge-most-wanted">¡Más Buscado!</span>';
+  } else if (product.isLowStock) {
+    badgeHTML = '<span class="product-badge badge-low-stock">¡Pocas Unidades!</span>';
+  }
+
   card.className = `product-card fade-in category-${product.category} ${product.isNew ? 'is-new' : ''}`;
   card.style.animationDelay = `${index * 0.05}s`;
 
   card.innerHTML = `
     <div class="product-image-container">
-      ${product.isNew ? '<span class="product-badge">¡Novedad!</span>' : ''}
+      ${badgeHTML}
       <img src="${product.images[0]}" alt="${product.name}" class="product-image" loading="lazy">
       <div class="product-overlay">
         <span style="color: white; font-weight: 600; font-size: 1.125rem;">Ver Detalles</span>
@@ -1109,6 +1164,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollToTop();
   initCountdown(); // Added countdown initialization
   initSearch(); // Initialize Search
+  initViewToggleListeners(); // Initialize View Toggle (Grid/List)
   renderNewArrivals(); // Render New Arrivals on homepage
 
   // Check URL params for category

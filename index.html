@@ -51,7 +51,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" style="min-height: 75vh;">
         <div class="hero-background"></div>
         <div class="container">
             <div class="hero-content">
@@ -62,6 +62,18 @@
                     <a href="products.html" class="btn btn-primary">Ver Productos</a>
                     <a href="contact.html" class="btn btn-secondary">Contáctanos</a>
                 </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator"
+            onclick="document.getElementById('newArrivalsSection').scrollIntoView({behavior: 'smooth'})">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="scroll-arrows">
+                <span></span>
+                <span></span>
             </div>
         </div>
     </section>
@@ -249,6 +261,68 @@
             </div>
         </div>
     </section>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Cerrar">×</button>
+
+            <!-- Image Gallery -->
+            <div class="modal-image-container">
+                <div class="main-image-wrapper">
+                    <img id="modalMainImage" src="" alt="Product" class="modal-main-image">
+                </div>
+                <div id="modalThumbnails" class="thumbnail-container">
+                    <!-- Thumbnails will be rendered here -->
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="modal-details">
+                <div id="modalProductNumber" class="product-number">#000</div>
+                <h2 id="modalProductName">Product Name</h2>
+                <p id="modalProductDescription"
+                    style="color: var(--primary-orange); font-size: 1rem; font-weight: 600; margin-bottom: var(--spacing-md);">
+                    Description</p>
+                <p id="modalLongDescription" style="color: var(--text-secondary); line-height: 1.8;">
+                    Modelo a escala 1:64 de alta precisión. Réplica detallada con acabados premium,
+                    ideal para coleccionistas exigentes. Incluye detalles auténticos del vehículo original.
+                </p>
+
+                <div
+                    style="margin-top: var(--spacing-xl); padding-top: var(--spacing-xl); border-top: 1px solid var(--border-color);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-sm);">Características:</h4>
+                    <ul id="modalFeaturesList" style="color: var(--text-secondary); line-height: 2;">
+                        <li>✓ Escala 1:64</li>
+                        <li>✓ Detalles ultra realistas</li>
+                        <li>✓ Acabados de alta calidad</li>
+                        <li>✓ Perfecto para coleccionistas</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: var(--spacing-xl); display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                    <a href="contact.html" class="btn btn-primary" style="flex: 1;">
+                        Consultar Disponibilidad
+                    </a>
+                    <button class="btn btn-secondary" onclick="closeModal()" style="flex: 1;">
+                        Cerrar
+                    </button>
+                </div>
+
+                <!-- Related Products -->
+                <div id="relatedProductsContainer"
+                    style="margin-top: var(--spacing-2xl); padding-top: var(--spacing-xl); border-top: 1px solid var(--border-color);">
+                    <h4 style="color: var(--primary-orange); margin-bottom: var(--spacing-lg);">También te podría
+                        interesar:</h4>
+                    <div id="relatedProductsGrid" class="products-grid"
+                        style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--spacing-md);">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">

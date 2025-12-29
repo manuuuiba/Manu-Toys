@@ -51,7 +51,7 @@
     </header>
 
     <!-- About Hero -->
-    <section class="hero" style="min-height: 70vh; padding-top: 100px;">
+    <section class="hero" style="min-height: 75vh; padding-top: 100px;">
         <div class="hero-background about-bg"></div>
         <div class="container">
             <div class="hero-content">
@@ -59,10 +59,22 @@
                 <p>Pasión por los coleccionables de alta calidad</p>
             </div>
         </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator"
+            onclick="document.getElementById('nuestra-historia').scrollIntoView({behavior: 'smooth'})">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="scroll-arrows">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </section>
 
     <!-- Our Story -->
-    <section class="section">
+    <section id="nuestra-historia" class="section">
         <div class="container-narrow">
             <div class="fade-in text-center" style="margin-bottom: var(--spacing-2xl);">
                 <h2>Nuestra Historia</h2>

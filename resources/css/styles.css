@@ -172,6 +172,42 @@ button {
     background-clip: text;
 }
 
+/* View Toggle */
+.view-toggle {
+    display: flex;
+    background: rgba(40, 40, 40, 0.4);
+    padding: 4px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.view-btn {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.view-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.view-btn.active {
+    background: var(--primary-orange);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
 /* ===================================
    Header & Navigation
    =================================== */
@@ -411,6 +447,83 @@ button {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: var(--spacing-lg);
     margin-top: var(--spacing-xl);
+    transition: all 0.3s ease;
+}
+
+/* List View Modifier */
+.products-grid.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.products-grid.list-view .product-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 140px;
+    max-width: 100%;
+}
+
+.products-grid.list-view .product-image-container {
+    width: 200px;
+    height: 100%;
+    padding-top: 0;
+    flex-shrink: 0;
+}
+
+.products-grid.list-view .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--spacing-xl);
+    gap: var(--spacing-lg);
+}
+
+.products-grid.list-view .product-name {
+    font-size: 1.15rem;
+    margin-bottom: 2px;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+}
+
+.products-grid.list-view .product-info p {
+    display: none;
+    /* Compactness */
+}
+
+.products-grid.list-view .view-details-btn {
+    width: auto;
+    min-width: 160px;
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .products-grid.list-view .product-card {
+        height: auto;
+        padding: var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+
+    .products-grid.list-view .product-image-container {
+        width: 120px;
+        height: 120px;
+        border-radius: var(--radius-md);
+    }
+
+    .products-grid.list-view .product-info {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 var(--spacing-xs);
+        gap: var(--spacing-xs);
+    }
+
+    .products-grid.list-view .view-details-btn {
+        width: 100%;
+        min-width: 0;
+    }
 }
 
 .product-card {
@@ -580,13 +693,11 @@ button {
     margin-right: auto;
 }
 
-/* Product Badge (Novedad) */
+/* Product Badges */
 .product-badge {
     position: absolute;
     top: 15px;
     left: 15px;
-    background: var(--primary-orange);
-    color: white;
     padding: 6px 14px;
     border-radius: 30px;
     font-size: 0.75rem;
@@ -595,25 +706,39 @@ button {
     text-transform: uppercase;
     letter-spacing: 1px;
     z-index: 10;
-    box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     pointer-events: none;
     animation: badgePulse 2s infinite;
+    color: white;
+}
+
+/* Badge Variants */
+.badge-novedad {
+    background: var(--primary-orange);
+    box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
+}
+
+.badge-most-wanted {
+    background: linear-gradient(135deg, #FF0080, #7928CA);
+    box-shadow: 0 4px 10px rgba(235, 0, 141, 0.4);
+}
+
+.badge-low-stock {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    box-shadow: 0 4px 10px rgba(217, 119, 6, 0.4);
 }
 
 @keyframes badgePulse {
     0% {
         transform: scale(1);
-        box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
     }
 
     50% {
         transform: scale(1.05);
-        box-shadow: 0 6px 15px rgba(255, 107, 53, 0.6);
     }
 
     100% {
         transform: scale(1);
-        box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
     }
 }
 
@@ -1479,5 +1604,101 @@ button {
     .scroll-top-btn {
         bottom: 20px;
         right: 20px;
+    }
+}
+
+/* ===================================
+   Scroll Indicator
+   =================================== */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--transition-base);
+}
+
+.scroll-indicator:hover {
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 20px;
+    position: relative;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.wheel {
+    width: 3px;
+    height: 6px;
+    background: var(--primary-orange);
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s infinite;
+}
+
+.scroll-arrows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.scroll-arrows span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid var(--primary-orange);
+    border-right: 2px solid var(--primary-orange);
+    transform: rotate(45deg);
+    opacity: 0;
+    animation: scrollArrows 2s infinite;
+}
+
+.scroll-arrows span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+@keyframes scrollWheel {
+    0% {
+        top: 8px;
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 22px;
+        opacity: 0;
+    }
+}
+
+@keyframes scrollArrows {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-5px, -5px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(5px, 5px);
     }
 }

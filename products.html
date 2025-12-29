@@ -51,7 +51,7 @@
     </header>
 
     <!-- Products Hero -->
-    <section class="hero" style="min-height: 70vh; padding-top: 100px;">
+    <section class="hero" style="min-height: 75vh; padding-top: 100px;">
         <div class="hero-background products-bg"></div>
         <div class="container">
             <div class="hero-content">
@@ -59,16 +59,36 @@
                 <p>Descubre modelos exclusivos de las mejores marcas del mundo</p>
             </div>
         </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator"
+            onclick="document.getElementById('filtros-productos').scrollIntoView({behavior: 'smooth'})">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="scroll-arrows">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </section>
 
     <!-- Products Section -->
-    <section class="section">
+    <section id="filtros-productos" class="section">
         <div class="container">
 
-            <!-- Search Bar -->
-            <div class="search-container fade-in">
+            <!-- Search Bar & View Toggle -->
+            <div class="search-container fade-in" style="display: flex; gap: 15px; align-items: center;">
                 <input type="text" id="productSearch" placeholder="🔍 Buscar modelo, número o descripción..."
-                    aria-label="Buscar productos">
+                    aria-label="Buscar productos" style="flex: 1;">
+                <div class="view-toggle">
+                    <button id="gridViewBtn" class="view-btn active" title="Vista de Cuadrícula">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button id="listViewBtn" class="view-btn" title="Vista de Lista">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
             </div>
 
             <!-- Category Filters -->

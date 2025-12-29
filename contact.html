@@ -51,7 +51,7 @@
     </header>
 
     <!-- Contact Hero -->
-    <section class="hero" style="min-height: 70vh; padding-top: 100px;">
+    <section class="hero" style="min-height: 75vh; padding-top: 100px;">
         <div class="hero-background contact-bg"></div>
         <div class="container">
             <div class="hero-content">
@@ -59,10 +59,22 @@
                 <p>Estamos aquí para ayudarte a encontrar tu próximo coleccionable</p>
             </div>
         </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator"
+            onclick="document.getElementById('contacto-seccion').scrollIntoView({behavior: 'smooth'})">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="scroll-arrows">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="section">
+    <section id="contacto-seccion" class="section">
         <div class="container">
 
             <div
