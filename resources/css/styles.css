@@ -497,6 +497,89 @@ button {
     overflow: hidden;
 }
 
+/* --- Skeleton Loaders --- */
+.skeleton-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.skeleton-image {
+    height: 250px;
+    background: linear-gradient(90deg, #1A1A1A 25%, #252525 50%, #1A1A1A 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite linear;
+}
+
+.skeleton-info {
+    padding: var(--spacing-md);
+}
+
+.skeleton-text {
+    height: 20px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #1A1A1A 25%, #252525 50%, #1A1A1A 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite linear;
+    border-radius: 4px;
+}
+
+.skeleton-text.short {
+    width: 60%;
+}
+
+.skeleton-text.long {
+    width: 90%;
+}
+
+.skeleton-text.btn {
+    height: 40px;
+    margin-top: 20px;
+}
+
+@keyframes skeleton-loading {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
+}
+
+/* --- No Results State --- */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--spacing-2xl) var(--spacing-md);
+    background: var(--bg-dark-secondary);
+    border-radius: var(--radius-xl);
+    border: 2px dashed var(--border-color);
+    animation: fadeInUp 0.5s ease both;
+}
+
+.no-results i {
+    font-size: 4rem;
+    color: var(--primary-orange);
+    margin-bottom: var(--spacing-md);
+    opacity: 0.5;
+}
+
+.no-results h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.no-results p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xl);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Product Badge (Novedad) */
 .product-badge {
     position: absolute;
@@ -1254,7 +1337,32 @@ button {
     animation: pulse-whatsapp 2s infinite;
 }
 
+/* --- Map Section --- */
+.contact-map-section {
+    margin-top: var(--spacing-3xl);
+    width: 100%;
+}
+
+.map-container {
+    width: 100%;
+    height: 450px;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
 @media (max-width: 768px) {
+    .map-container {
+        height: 300px;
+    }
+
     .whatsapp-float {
         width: 50px;
         height: 50px;

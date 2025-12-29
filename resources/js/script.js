@@ -528,8 +528,14 @@ function renderProducts() {
   // Show "No results" message if empty
   if (filteredProducts.length === 0) {
     productsGrid.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-secondary);">
-        <p style="font-size: 1.25rem;">No encontramos productos que coincidan con tu búsqueda 🔍</p>
+      <div class="no-results fade-in">
+        <i class="fas fa-search"></i>
+        <h3>No encontramos ese modelo</h3>
+        <p>No tenemos "${searchQuery}" en este momento, pero ¡podemos intentar conseguirlo para ti!</p>
+        <a href="https://wa.me/525667796480?text=Hola%20Manu%20Toys,%20busco%20un%20modelo%20que%20no%20vi%20en%20la%20página:%20${searchQuery}" 
+           class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+           Consultar por WhatsApp →
+        </a>
       </div>
     `;
     return;
@@ -543,6 +549,27 @@ function renderProducts() {
 
   // Reinitialize scroll animations
   initScrollAnimations();
+}
+
+function showSkeletons() {
+  const productsGrid = document.getElementById('productsGrid');
+  if (!productsGrid) return;
+
+  productsGrid.innerHTML = '';
+  // Show 4 skeleton cards
+  for (let i = 0; i < 4; i++) {
+    const skeleton = document.createElement('div');
+    skeleton.className = 'skeleton-card';
+    skeleton.innerHTML = `
+      <div class="skeleton-image"></div>
+      <div class="skeleton-info">
+        <div class="skeleton-text short"></div>
+        <div class="skeleton-text long"></div>
+        <div class="skeleton-text btn"></div>
+      </div>
+    `;
+    productsGrid.appendChild(skeleton);
+  }
 }
 
 function createProductCard(product, index) {
@@ -596,6 +623,61 @@ function createProductCard(product, index) {
 }
 
 // ===================================
+// New Arrivals Section (Homepage)
+// ===================================
+function renderNewArrivals() {
+  const newArrivalsGrid = document.getElementById('newArrivalsGrid');
+  const newArrivalsSection = document.getElementById('newArrivalsSection');
+  if (!newArrivalsGrid || !newArrivalsSection) return;
+
+  const newProducts = products.filter(p => p.isNew);
+
+  if (newProducts.length === 0) {
+    newArrivalsSection.style.display = 'none';
+    return;
+  }
+
+  newArrivalsSection.style.display = 'block';
+  newArrivalsGrid.innerHTML = '';
+
+  newProducts.forEach((product, index) => {
+    const card = createProductCard(product, index);
+    newArrivalsGrid.appendChild(card);
+  });
+}
+
+// ===================================
+// Related Products (Modal)
+// ===================================
+function renderRelatedProducts(currentProduct) {
+  const relatedGrid = document.getElementById('relatedProductsGrid');
+  const relatedContainer = document.getElementById('relatedProductsContainer');
+  if (!relatedGrid || !relatedContainer) return;
+
+  // Filter products from same category, excluding current
+  const related = products
+    .filter(p => p.category === currentProduct.category && p.id !== currentProduct.id)
+    .sort(() => 0.5 - Math.random()) // Randomize
+    .slice(0, 3); // Take 3
+
+  if (related.length === 0) {
+    relatedContainer.style.display = 'none';
+    return;
+  }
+
+  relatedContainer.style.display = 'block';
+  relatedGrid.innerHTML = '';
+
+  related.forEach((product, index) => {
+    // We use a simplified version of createProductCard if needed, or just the same one
+    const card = createProductCard(product, index);
+    // Adjust size for related products if needed via CSS or classes
+    card.classList.add('related-card');
+    relatedGrid.appendChild(card);
+  });
+}
+
+// ===================================
 // Category Filtering
 // ===================================
 function initCategoryFilters() {
@@ -615,8 +697,13 @@ function initCategoryFilters() {
 
       // Update global category and re-render
       activeCategory = category;
-      currentProduct = null; // Reset current product when category changes
-      renderProducts();
+      currentProduct = null;
+
+      // Show skeletons before rendering
+      showSkeletons();
+      setTimeout(() => {
+        renderProducts();
+      }, 400); // Brief delay for the "premium" feel
     });
   });
 }
@@ -646,6 +733,10 @@ function openModal(product) {
   // Show modal
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
+
+  // Render related products
+  renderRelatedProducts(product);
+
   startSlideShow();
 }
 
@@ -976,6 +1067,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initScrollToTop();
   initSearch(); // Initialize Search
+  renderNewArrivals(); // Render New Arrivals on homepage
 
   // Check URL params for category
   const urlParams = new URLSearchParams(window.location.search);
