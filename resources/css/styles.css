@@ -464,6 +464,11 @@ button {
     transform: scale(1.1);
 }
 
+.category-mini-gt.product-card:hover .product-image {
+    transform: scale(1);
+    /* Disable scale for MINI GT to focus on carousel */
+}
+
 .product-overlay {
     position: absolute;
     top: 0;

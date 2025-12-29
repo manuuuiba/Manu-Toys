@@ -563,6 +563,30 @@ function createProductCard(product, index) {
     </div>
   `;
 
+  const productImage = card.querySelector('.product-image');
+  let hoverInterval;
+  let currentHoverIndex = 0;
+
+  // Hover carousel for MINI GT
+  if (product.category === 'mini-gt' && product.images.length > 1) {
+    card.addEventListener('mouseenter', () => {
+      hoverInterval = setInterval(() => {
+        currentHoverIndex = (currentHoverIndex + 1) % product.images.length;
+        productImage.style.opacity = '0.7';
+        setTimeout(() => {
+          productImage.src = product.images[currentHoverIndex];
+          productImage.style.opacity = '1';
+        }, 150);
+      }, 1000); // Cycle every 1 second
+    });
+
+    card.addEventListener('mouseleave', () => {
+      clearInterval(hoverInterval);
+      currentHoverIndex = 0;
+      productImage.src = product.images[0];
+    });
+  }
+
   card.addEventListener('click', () => openModal(product));
 
   return card;
