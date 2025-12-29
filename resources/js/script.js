@@ -1057,6 +1057,47 @@ function initScrollToTop() {
 // ===================================
 // Initialize Everything
 // ===================================
+/**
+ * Countdown Timer Logic
+ */
+function initCountdown() {
+  const countdownContainer = document.getElementById('countdown');
+  if (!countdownContainer) return;
+
+  // Set target date: 7 days from now for demonstration
+  // In production, this can be set to a specific date like: new Date('2024-01-15T10:00:00').getTime();
+  const targetDate = new Date().getTime() + (7 * 24 * 60 * 60 * 1000);
+
+  const updateCountdown = () => {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minsEl = document.getElementById('minutes');
+    const secsEl = document.getElementById('seconds');
+
+    if (daysEl) daysEl.innerText = days.toString().padStart(2, '0');
+    if (hoursEl) hoursEl.innerText = hours.toString().padStart(2, '0');
+    if (minsEl) minsEl.innerText = minutes.toString().padStart(2, '0');
+    if (secsEl) secsEl.innerText = seconds.toString().padStart(2, '0');
+
+    if (distance < 0) {
+      clearInterval(timerInterval);
+      document.querySelector('.countdown-section .countdown-title').innerText = "¡El Drop Esté Aquí!";
+      countdownContainer.innerHTML = `<h3 style="color: var(--primary-orange); font-size: 2rem;">¡YA DISPONIBLE!</h3>`;
+    }
+  };
+
+  const timerInterval = setInterval(updateCountdown, 1000);
+  updateCountdown();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initHeaderScroll();
   initMobileMenu();
@@ -1066,6 +1107,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initModalControls();
   initContactForm();
   initScrollToTop();
+  initCountdown(); // Added countdown initialization
   initSearch(); // Initialize Search
   renderNewArrivals(); // Render New Arrivals on homepage
 

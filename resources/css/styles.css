@@ -1337,10 +1337,115 @@ button {
     animation: pulse-whatsapp 2s infinite;
 }
 
-/* --- Map Section --- */
-.contact-map-section {
-    margin-top: var(--spacing-3xl);
+/* --- Countdown Timer Section --- */
+.countdown-section {
+    position: relative;
+    padding: var(--spacing-4xl) 0;
+    background: #0a0a0a;
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.15) 0%, transparent 70%),
+        url('../images/Backgrounds/mini_gt_bg.webp');
+    /* Reuse a blurred car background */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    text-align: center;
+    overflow: hidden;
+    margin: var(--spacing-4xl) 0;
+}
+
+.countdown-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.8) 100%);
+    z-index: 1;
+}
+
+.countdown-content {
+    position: relative;
+    z-index: 2;
+}
+
+.countdown-label {
+    display: inline-block;
+    color: var(--primary-orange);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.countdown-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: var(--spacing-2xl);
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+    flex-wrap: wrap;
+}
+
+.timer-item {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    min-width: 120px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.timer-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-orange);
+}
+
+.timer-value {
+    display: block;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 800;
+    font-family: var(--font-secondary);
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    text-shadow: 0 0 15px rgba(255, 107, 53, 0.4);
+}
+
+.timer-label {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.countdown-info {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-2xl);
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+@media (max-width: 768px) {
+    .countdown-timer {
+        gap: var(--spacing-md);
+    }
+
+    .timer-item {
+        min-width: 80px;
+        padding: var(--spacing-md);
+    }
 }
 
 .map-container {
