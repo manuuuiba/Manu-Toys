@@ -429,10 +429,12 @@ button {
     border-color: var(--primary-orange);
 }
 
+/* Standard image container for all products */
 .product-image-container {
     position: relative;
     width: 100%;
     padding-top: 75%;
+    /* 4:3 Aspect Ratio */
     background: var(--bg-dark-secondary);
     overflow: hidden;
 }
@@ -445,6 +447,17 @@ button {
     height: 100%;
     object-fit: cover;
     transition: var(--transition-slow);
+}
+
+/* Independent Category Styles */
+.category-mini-gt .product-image {
+    object-position: center center;
+}
+
+.category-hot-wheels .product-image,
+.category-hw-premium .product-image {
+    object-position: center 85%;
+    /* Focused look restored in grid */
 }
 
 .product-card:hover .product-image {
@@ -608,13 +621,33 @@ button {
 .modal-main-image {
     width: 100%;
     height: auto;
+    max-height: 55vh;
     object-fit: cover;
-    /* Fill the width nicely */
     display: block;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
-    /* Add shadow to car itself */
-    /* transition: transform 0.4s ease, opacity 0.4s ease; Removed transform if it conflicts */
     transition: opacity 0.4s ease;
+}
+
+/* Modal Category Overrides */
+.modal-category-hot-wheels .modal-image-container,
+.modal-category-hw-premium .modal-image-container {
+    background: #ffffff;
+    /* User requested white background for Hot Wheels in modal only */
+}
+
+.modal-category-hot-wheels .modal-main-image,
+.modal-category-hw-premium .modal-main-image {
+    object-fit: contain;
+    object-position: center center;
+    padding: 15px;
+    filter: none !important;
+}
+
+.modal-category-mini-gt .modal-main-image {
+    object-fit: cover;
+    /* Fill the frame for MINI GT premium look */
+    object-position: center 80%;
+    /* Slightly adjust to show numbers/car better */
 }
 
 /* Slide Animation Classes */

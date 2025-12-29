@@ -288,6 +288,130 @@ const products = [
       'resources/images/Productos/MINI GT/1045 Nissan GT-R Nismo 2024 (Brilliant White Pearl) /1045-3.jpeg',
       'resources/images/Productos/MINI GT/1045 Nissan GT-R Nismo 2024 (Brilliant White Pearl) /1045-4.jpeg'
     ]
+  },
+  // ===================================
+  // HOT WHEELS Collection
+  // ===================================
+  // Premium
+  {
+    id: 2009,
+    category: 'hw-premium',
+    name: 'Ferrari 499P',
+    description: 'Rosso Corsa',
+    images: ['resources/images/Productos/HW Premium/FERRARI 499P rosso corsa.jpeg']
+  },
+  // Mainline / Others
+  {
+    id: 2004,
+    category: 'hot-wheels',
+    name: 'Subaru BRZ',
+    description: 'White',
+    images: ['resources/images/Productos/Hot Wheels/ SUBARU BRZ – White – .jpeg']
+  },
+  {
+    id: 2011,
+    category: 'hot-wheels',
+    name: 'Koenigsegg Jesko (2020)',
+    description: 'Blue Grey',
+    images: ['resources/images/Productos/Hot Wheels/2020 KOENIGSEGG JESKO – Blue Grey – .jpeg']
+  },
+  {
+    id: 2003,
+    category: 'hot-wheels',
+    name: 'Aston Martin DB4GT',
+    description: 'High-Speed Edition - yellow',
+    images: ['resources/images/Productos/Hot Wheels/Aston Martin DB4GT High-Speed Edition - yellow.jpeg']
+  },
+  {
+    id: 2006,
+    category: 'hot-wheels',
+    name: 'Cadillac Project GTP Hypercar',
+    description: 'Red',
+    images: ['resources/images/Productos/Hot Wheels/CADILLAC PROJECT GTP HYPERCAR:HYPERVOITURE – Red –.jpeg']
+  },
+  {
+    id: 2012,
+    category: 'hot-wheels',
+    name: 'Custom Kia EV6',
+    description: 'Metalflake Teal',
+    images: ['resources/images/Productos/Hot Wheels/CUSTOM KIA EV6 – Metalflake Teal –.jpeg']
+  },
+  {
+    id: 2007,
+    category: 'hot-wheels',
+    name: 'Drift-Ender',
+    description: 'Blue',
+    images: ['resources/images/Productos/Hot Wheels/DRIFT-ENDER – Blue –.jpeg']
+  },
+  {
+    id: 2008,
+    category: 'hot-wheels',
+    name: 'Ford Escort',
+    description: 'Purple',
+    images: ['resources/images/Productos/Hot Wheels/FORD ESCORT – Purple .jpeg']
+  },
+  {
+    id: 2014,
+    category: 'hot-wheels',
+    name: 'Ford Mustang Dark Horse',
+    description: 'White',
+    images: ['resources/images/Productos/Hot Wheels/FORD MUSTANG DARK HORSE – White – .jpeg']
+  },
+  {
+    id: 2017,
+    category: 'hot-wheels',
+    name: 'Jaguar MK1',
+    description: 'Blue Grey',
+    images: ['resources/images/Productos/Hot Wheels/JAGUAR MK1 – Blue Grey –.jpeg']
+  },
+  {
+    id: 2013,
+    category: 'hot-wheels',
+    name: 'King Kuda',
+    description: 'Green',
+    images: ['resources/images/Productos/Hot Wheels/KING KUDA – Green – .jpeg']
+  },
+  {
+    id: 2002,
+    category: 'hot-wheels',
+    name: 'Peugeot 9x8 Hypercar',
+    description: 'White',
+    images: ['resources/images/Productos/Hot Wheels/PEUGEOT 9X8 HYPERCAR:HYPERVOITURE – White –.jpeg']
+  },
+  {
+    id: 2001,
+    category: 'hot-wheels',
+    name: 'Porsche 904 Carrera GTS',
+    description: 'Black',
+    images: ['resources/images/Productos/Hot Wheels/PORSCHE 904 CARRERA GTS – Black – .jpeg']
+  },
+  {
+    id: 2015,
+    category: 'hot-wheels',
+    name: 'Tesla Model S Plaid',
+    description: 'Blue',
+    images: ['resources/images/Productos/Hot Wheels/TESLA MODEL S PLAID BLUE.jpeg']
+  },
+  {
+    id: 2005,
+    category: 'hot-wheels',
+    name: '\'66 Buick Riviera',
+    description: 'Black',
+    images: ['resources/images/Productos/Hot Wheels/‘66 BUICK RIVIERA – Black –.jpeg']
+  },
+  {
+    id: 2010,
+    category: 'hot-wheels',
+    name: '\'73 Pontiac Firebird',
+    description: 'White',
+    images: ['resources/images/Productos/Hot Wheels/‘73 PONTIAC FIREBIRD – White –.jpeg']
+  },
+  {
+    id: 2016,
+    category: 'hot-wheels',
+    name: '\'75 Chevy Blazer Custom',
+    description: 'White',
+    images: ['resources/images/Productos/Hot Wheels/‘75 CHEVY BLAZER CUSTOM – White – .jpeg']
   }
 ];
 
@@ -421,7 +545,7 @@ function renderProducts() {
 
 function createProductCard(product, index) {
   const card = document.createElement('div');
-  card.className = 'product-card fade-in';
+  card.className = `product-card fade-in category-${product.category}`;
   card.style.animationDelay = `${index * 0.05}s`;
 
   card.innerHTML = `
@@ -432,7 +556,7 @@ function createProductCard(product, index) {
       </div>
     </div>
     <div class="product-info">
-      <div class="product-number">#${product.id}</div>
+      <div class="product-number" style="${(product.category === 'hot-wheels' || product.category === 'hw-premium') ? 'display: none;' : ''}">#${product.id}</div>
       <h3 class="product-name">${product.name}</h3>
       <p style="color: var(--text-secondary); font-size: 0.875rem; margin: 0.5rem 0;">${product.description}</p>
       <button class="view-details-btn">Ver Detalles</button>
@@ -452,6 +576,10 @@ function initCategoryFilters() {
 
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
+      // Hot Wheels is now active
+      const category = btn.dataset.category;
+
+      // If the button is disabled, do nothing
       if (btn.classList.contains('disabled')) return;
 
       // Update active state
@@ -459,7 +587,8 @@ function initCategoryFilters() {
       btn.classList.add('active');
 
       // Update global category and re-render
-      activeCategory = btn.dataset.category;
+      activeCategory = category;
+      currentProduct = null; // Reset current product when category changes
       renderProducts();
     });
   });
@@ -513,47 +642,115 @@ function updateModalContent() {
   const modalNumber = document.getElementById('modalProductNumber');
   const modalDescription = document.getElementById('modalProductDescription');
 
+  const modal = document.getElementById('productModal');
+  if (modal) {
+    // Remove previous category classes
+    modal.classList.forEach(className => {
+      if (className.startsWith('modal-category-')) {
+        modal.classList.remove(className);
+      }
+    });
+    // Add current category class
+    modal.classList.add(`modal-category-${currentProduct.category}`);
+  }
+
   // Update text content immediately
   if (modalTitle) modalTitle.textContent = currentProduct.name;
-  if (modalNumber) modalNumber.textContent = `#${currentProduct.id}`;
+  if (modalNumber) {
+    modalNumber.textContent = `#${currentProduct.id}`;
+    modalNumber.style.display = (currentProduct.category === 'hot-wheels' || currentProduct.category === 'hw-premium') ? 'none' : 'block';
+  }
   if (modalDescription) modalDescription.textContent = currentProduct.description;
+
+  const longDesc = document.getElementById('modalLongDescription');
+  const featuresList = document.getElementById('modalFeaturesList');
+
+  if (currentProduct.category === 'hot-wheels') {
+    if (longDesc) {
+      longDesc.textContent = "Línea Básica: Los juguetes que todos conocemos, los auténticos Hot Wheels que han marcado generaciones. ¡Colecciónalos todos!";
+    }
+    if (featuresList) {
+      featuresList.innerHTML = `
+        <li>✓ Escala 1:64</li>
+        <li>✓ Diseños icónicos</li>
+        <li>✓ Construcción resistente</li>
+        <li>✓ Diversión garantizada</li>
+      `;
+    }
+  } else if (currentProduct.category === 'hw-premium') {
+    if (longDesc) {
+      longDesc.textContent = "Hot Wheels Premium: Modelos de alta gama con detalles superiores, base de metal y llantas de goma (Real Riders). La joya de la corona para coleccionistas.";
+    }
+    if (featuresList) {
+      featuresList.innerHTML = `
+        <li>✓ Escala 1:64</li>
+        <li>✓ Llantas de Goma (Real Riders)</li>
+        <li>✓ Carrocería y Base de Metal</li>
+        <li>✓ Pintura y Detalles Premium</li>
+      `;
+    }
+  } else {
+    // MINI GT / Default
+    if (longDesc) {
+      longDesc.textContent = "Modelo a escala 1:64 de alta precisión. Réplica detallada con acabados premium, ideal para coleccionistas exigentes. Incluye detalles auténticos del vehículo original.";
+    }
+    if (featuresList) {
+      featuresList.innerHTML = `
+        <li>✓ Escala 1:64</li>
+        <li>✓ Detalles ultra realistas</li>
+        <li>✓ Acabados de alta calidad</li>
+        <li>✓ Perfecto para coleccionistas</li>
+      `;
+    }
+  }
 
   // Animate and update image
   if (mainImage) {
-    // Phase 1: Slide Out
-    mainImage.classList.add('slide-out-left');
-    mainImage.classList.remove('slide-in-right');
+    const isHotWheels = currentProduct.category === 'hot-wheels' || currentProduct.category === 'hw-premium';
 
-    setTimeout(() => {
-      // Phase 2: Change Source
-      mainImage.src = currentProduct.images[currentImageIndex];
+    if (isHotWheels) {
+      // Direct update without animation for Hot Wheels
+      mainImage.src = currentProduct.images[0];
+      mainImage.classList.remove('slide-out-left', 'slide-in-right');
+    } else {
+      // Phase 1: Slide Out (Only for MINI GT or others with multiple images)
+      mainImage.classList.add('slide-out-left');
+      mainImage.classList.remove('slide-in-right');
 
-      // Phase 3: Slide In
-      mainImage.onload = () => {
-        mainImage.classList.remove('slide-out-left');
-        mainImage.classList.add('slide-in-right');
-      };
-      // Fallback in case onload feels slow or cached
       setTimeout(() => {
-        mainImage.classList.remove('slide-out-left');
-        mainImage.classList.add('slide-in-right');
-      }, 50);
+        // Phase 2: Change Source
+        mainImage.src = currentProduct.images[currentImageIndex];
 
-    }, 200); // Wait for slide out animation part
+        // Phase 3: Slide In
+        mainImage.onload = () => {
+          mainImage.classList.remove('slide-out-left');
+          mainImage.classList.add('slide-in-right');
+        };
+        // Fallback
+        setTimeout(() => {
+          mainImage.classList.remove('slide-out-left');
+          mainImage.classList.add('slide-in-right');
+        }, 50);
+
+      }, 200);
+    }
   }
 
   // Update thumbnails
   const thumbnailContainer = document.getElementById('modalThumbnails');
   if (thumbnailContainer) {
     thumbnailContainer.innerHTML = '';
-    currentProduct.images.forEach((img, index) => {
-      const thumbnail = document.createElement('img');
-      thumbnail.src = img;
-      thumbnail.alt = `${currentProduct.name} - Image ${index + 1}`;
-      thumbnail.className = 'thumbnail' + (index === currentImageIndex ? ' active' : '');
-      thumbnail.addEventListener('click', () => selectImage(index));
-      thumbnailContainer.appendChild(thumbnail);
-    });
+    // Only show thumbnails if there's more than one image
+    if (currentProduct.images.length > 1) {
+      currentProduct.images.forEach((img, index) => {
+        const thumbnail = document.createElement('img');
+        thumbnail.src = img;
+        thumbnail.alt = `${currentProduct.name} - Image ${index + 1}`;
+        thumbnail.className = 'thumbnail' + (index === currentImageIndex ? ' active' : '');
+        thumbnail.addEventListener('click', () => selectImage(index));
+        thumbnailContainer.appendChild(thumbnail);
+      });
+    }
   }
 }
 
@@ -566,6 +763,11 @@ function selectImage(index) {
 
 function startSlideShow() {
   stopSlideShow();
+  // Don't start slideshow for Hot Wheels categories
+  if (currentProduct && (currentProduct.category === 'hot-wheels' || currentProduct.category === 'hw-premium')) {
+    return;
+  }
+
   slideInterval = setInterval(() => {
     if (!currentProduct) return;
     currentImageIndex = (currentImageIndex + 1) % currentProduct.images.length;
@@ -746,11 +948,24 @@ document.addEventListener('DOMContentLoaded', () => {
   initModalControls();
   initContactForm();
   initScrollToTop();
-
-  initModalControls();
-  initContactForm();
-  initScrollToTop();
   initSearch(); // Initialize Search
+
+  // Check URL params for category
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryParam = urlParams.get('category');
+  if (categoryParam) {
+    activeCategory = categoryParam;
+    // Update button active state
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    if (filterBtns.length > 0) {
+      filterBtns.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.category === activeCategory) {
+          btn.classList.add('active');
+        }
+      });
+    }
+  }
 
   // Render products if on products page
   if (document.getElementById('productsGrid')) {
