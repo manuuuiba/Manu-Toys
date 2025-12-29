@@ -197,6 +197,7 @@ const products = [
     id: 889,
     category: 'mini-gt',
     name: 'Porsche 911 GT3 R #77',
+    isNew: true, // New arrival
     description: 'AO Racing 2024 IMSA Daytona 24 Hrs GTD Pro 2nd Place',
     images: [
       'resources/images/Productos/MINI%20GT/889%20Porsche%20911%20GT3%20R%20%2377%20AO%20Racing%202024%20IMSA%20Daytona%2024%20Hrs%20GTD%20Pro%202nd%20Place/889.jpeg',
@@ -297,6 +298,7 @@ const products = [
     id: 2009,
     category: 'hw-premium',
     name: 'Ferrari 499P',
+    isNew: true, // New arrival
     description: 'Rosso Corsa',
     images: ['resources/images/Productos/HW Premium/FERRARI 499P rosso corsa.jpeg']
   },
@@ -545,11 +547,12 @@ function renderProducts() {
 
 function createProductCard(product, index) {
   const card = document.createElement('div');
-  card.className = `product-card fade-in category-${product.category}`;
+  card.className = `product-card fade-in category-${product.category} ${product.isNew ? 'is-new' : ''}`;
   card.style.animationDelay = `${index * 0.05}s`;
 
   card.innerHTML = `
     <div class="product-image-container">
+      ${product.isNew ? '<span class="product-badge">¡Novedad!</span>' : ''}
       <img src="${product.images[0]}" alt="${product.name}" class="product-image" loading="lazy">
       <div class="product-overlay">
         <span style="color: white; font-weight: 600; font-size: 1.125rem;">Ver Detalles</span>
