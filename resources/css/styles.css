@@ -270,11 +270,35 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.1), transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.08), transparent 40%),
-        radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.08), transparent 40%);
-    animation: pulse 8s ease-in-out infinite;
+    /* Overlay oscuro restaurado (0.8/0.6) */
+    background: linear-gradient(to bottom, rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.6)),
+        url('../images/r32.png') no-repeat center center;
+    background-size: cover;
+    /* Fill the whole area */
+    background-position: center center;
     z-index: 0;
+}
+
+/* Page Specific Backgrounds */
+.hero-background.products-bg {
+    background-image: linear-gradient(to bottom, rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.6)),
+        url('../images/mcl60.png');
+    background-size: cover;
+    background-position: bottom center;
+}
+
+.hero-background.contact-bg {
+    background-image: linear-gradient(to bottom, rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.6)),
+        url('../images/r35.png');
+    background-size: cover;
+    background-position: bottom center;
+}
+
+.hero-background.about-bg {
+    background-image: linear-gradient(to bottom, rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.6)),
+        url('../images/puma.png');
+    background-size: cover;
+    background-position: bottom center;
 }
 
 .hero-content {
@@ -554,34 +578,43 @@ button {
 }
 
 .modal-image-container {
-    background: #000;
-    padding: var(--spacing-md);
+    background: transparent;
+    padding: 0;
+    /* Remove padding to maximize image */
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-bottom: 1px solid var(--border-color);
+    overflow: hidden;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 
 .main-image-wrapper {
     width: 100%;
-    height: 35vh;
-    /* Reduced height to fit info */
-    min-height: 250px;
-    max-height: 400px;
+    height: auto;
+    /* Let image define height */
+    max-height: 70vh;
+    /* Cap it so it fits on screen */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 0;
     overflow: hidden;
     position: relative;
+    background: transparent;
 }
 
 .modal-main-image {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transition: transform 0.4s ease, opacity 0.4s ease;
+    height: auto;
+    object-fit: cover;
+    /* Fill the width nicely */
+    display: block;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    /* Add shadow to car itself */
+    /* transition: transform 0.4s ease, opacity 0.4s ease; Removed transform if it conflicts */
+    transition: opacity 0.4s ease;
 }
 
 /* Slide Animation Classes */
@@ -610,11 +643,9 @@ button {
     display: flex;
     gap: var(--spacing-sm);
     padding: var(--spacing-xs) var(--spacing-md);
-    /* Reduced padding */
-    background: var(--bg-dark);
+    background: transparent;
     overflow-x: auto;
     justify-content: center;
-    /* Center thumbnails */
     width: 100%;
 }
 

@@ -296,7 +296,6 @@ const products = [
 // ===================================
 let currentProduct = null;
 let currentImageIndex = 0;
-
 let slideInterval = null;
 let activeCategory = 'mini-gt'; // Global state for category
 
@@ -580,6 +579,7 @@ function stopSlideShow() {
     slideInterval = null;
   }
 }
+
 
 function initModalControls() {
   // Close button
