@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galería de imágenes de Manu Toys - Coleccionables de alta calidad">
+    <title>Galería - Manu Toys</title>
+
+    <!-- Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="resources/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="resources/images/Logos/mt naranja.PNG">
+</head>
+
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                    <img src="resources/images/Logos/mt blanco.png" alt="Manu Toys Logo" class="logo">
+                    <span
+                        style="font-family: var(--font-primary); font-size: 1.5rem; font-weight: 700; color: #fff;">Manu
+                        Toys</span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="gallery.html" class="active">Galería</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    ☰
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Gallery Hero -->
+    <section class="hero" style="min-height: 60vh; padding-top: 100px;">
+        <div class="hero-background"
+            style="background-image: linear-gradient(to bottom, rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.6)), url('resources/images/mcl60.png');">
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Modelos en <span class="text-gradient">Display</span></h1>
+                <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto;">Nuestra vitrina exclusiva de
+                    coleccionables de alta gama, fotografiados profesionalmente para apreciar cada detalle</p>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator"
+            onclick="document.getElementById('gallery-intro').scrollIntoView({behavior: 'smooth'})">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="scroll-arrows"><span></span><span></span></div>
+        </div>
+    </section>
+
+    <!-- Gallery Intro -->
+    <section id="gallery-intro" class="section"
+        style="padding-top: var(--spacing-2xl); padding-bottom: var(--spacing-xl);">
+        <div class="container">
+            <div class="text-center fade-in">
+                <h2>Exhibición <span class="text-gradient">Premium</span></h2>
+                <p
+                    style="max-width: 800px; margin: var(--spacing-md) auto 0; font-size: 1.125rem; color: var(--text-secondary); line-height: 1.8;">
+                    Cada modelo de nuestra colección es una obra de arte en miniatura. Aquí presentamos nuestras piezas
+                    más destacadas en fotografías de alta calidad,
+                    capturando los detalles que hacen única a cada réplica. Desde modelos MINI GT ultra detallados hasta
+                    Hot Wheels Premium de edición especial.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery-section" class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="resources/images/Galeria/12.jpeg" alt="Coleccionable 1" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="resources/images/Galeria/963.jpeg" alt="Coleccionable 2" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="resources/images/Galeria/AO.jpeg" alt="Coleccionable 3" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="resources/images/Galeria/Cadillac.jpeg" alt="Coleccionable 4" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="resources/images/Galeria/Corvette.jpeg" alt="Coleccionable 5" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="resources/images/Galeria/LH44.jpeg" alt="Coleccionable 6" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="resources/images/Galeria/Rexy.jpeg" alt="Coleccionable 7" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="resources/images/Galeria/Rexy2.jpeg" alt="Coleccionable 8" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="resources/images/Galeria/Rexys.jpeg" alt="Coleccionable 9" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="resources/images/Galeria/Roxy.jpeg" alt="Coleccionable 10" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="resources/images/Galeria/SC63.jpeg" alt="Coleccionable 11" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="resources/images/Galeria/SP11.jpeg" alt="Coleccionable 12" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="galleryLightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <button class="lightbox-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="Vista ampliada">
+        </div>
+        <button class="lightbox-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div
+                        style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: var(--spacing-md);">
+                        <img src="resources/images/Logos/mt blanco.png" alt="Manu Toys" style="height: 60px;">
+                        <span
+                            style="font-family: var(--font-primary); font-size: 1.8rem; font-weight: 700; color: #fff;">Manu
+                            Toys</span>
+                    </div>
+                    <p>Coleccionables de alta calidad para verdaderos entusiastas del automovilismo.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <a href="index.html">Inicio</a>
+                    <a href="products.html">Productos</a>
+                    <a href="gallery.html">Galería</a>
+                    <a href="about.html">Nosotros</a>
+                    <a href="contact.html">Contacto</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Categorías</h3>
+                    <a href="products.html?category=mini-gt">MINI GT</a>
+                    <a href="products.html?category=hot-wheels">Hot Wheels</a>
+                    <a href="products.html?category=hw-premium">HW Premium</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>Contáctanos por Facebook, Instagram o TikTok</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/manu.toys/" target="_blank" rel="noopener noreferrer"
+                            class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/manu._.toys/" target="_blank" rel="noopener noreferrer"
+                            class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@manu._.toys" target="_blank" rel="noopener noreferrer"
+                            class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Manu Toys. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/525667796480?text=Hola%20Manu%20Toys,%20vi%20la%20galería%20y%20me%20encantaron%20tus%20fotos"
+        class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="resources/js/script.js"></script>
+</body>
+
+</html>

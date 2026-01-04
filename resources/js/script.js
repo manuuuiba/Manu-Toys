@@ -1153,6 +1153,64 @@ function initCountdown() {
   updateCountdown();
 }
 
+// ===================================
+// Gallery Lightbox
+// ===================================
+function initGalleryLightbox() {
+  const lightbox = document.getElementById('galleryLightbox');
+  const lightboxImg = document.getElementById('lightboxImage');
+  const closeBtn = document.querySelector('.lightbox-close');
+  const prevBtn = document.querySelector('.lightbox-prev');
+  const nextBtn = document.querySelector('.lightbox-next');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  if (!lightbox || !lightboxImg || galleryItems.length === 0) return;
+
+  let currentIndex = 0;
+  const images = Array.from(galleryItems).map(item => item.querySelector('img').src);
+
+  const openLightbox = (index) => {
+    currentIndex = index;
+    lightboxImg.src = images[currentIndex];
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  const showNext = () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImg.src = images[currentIndex];
+  };
+
+  const showPrev = () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentIndex];
+  };
+
+  galleryItems.forEach((item, index) => {
+    item.addEventListener('click', () => openLightbox(index));
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (nextBtn) nextBtn.addEventListener('click', showNext);
+  if (prevBtn) prevBtn.addEventListener('click', showPrev);
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initHeaderScroll();
   initMobileMenu();
@@ -1165,6 +1223,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCountdown(); // Added countdown initialization
   initSearch(); // Initialize Search
   initViewToggleListeners(); // Initialize View Toggle (Grid/List)
+  initGalleryLightbox(); // Initialize Gallery Lightbox
   renderNewArrivals(); // Render New Arrivals on homepage
 
   // Check URL params for category
