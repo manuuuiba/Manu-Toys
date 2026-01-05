@@ -311,7 +311,8 @@ button {
         url('../images/r32.png') no-repeat center center;
     background-size: cover;
     /* Fill the whole area */
-    background-position: center center;
+    /* Fill the whole area */
+    background-position: bottom center;
     z-index: 0;
 }
 
@@ -333,6 +334,13 @@ button {
 .hero-background.about-bg {
     background-image: linear-gradient(to bottom, rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.6)),
         url('../images/puma.png');
+    background-size: cover;
+    background-position: bottom center;
+}
+
+.hero-background.gallery-bg {
+    background-image: linear-gradient(to bottom, rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.6)),
+        url('../images/r32.png');
     background-size: cover;
     background-position: bottom center;
 }
