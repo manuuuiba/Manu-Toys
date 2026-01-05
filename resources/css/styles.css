@@ -728,6 +728,12 @@ button {
     box-shadow: 0 4px 10px rgba(217, 119, 6, 0.4);
 }
 
+.badge-sold-out {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.6);
+    animation: badgePulse 2s infinite;
+}
+
 @keyframes badgePulse {
     0% {
         transform: scale(1);
@@ -1701,7 +1707,9 @@ button {
         opacity: 0;
         transform: rotate(45deg) translate(5px, 5px);
     }
-}/* Gallery Styles */
+}
+
+/* Gallery Styles */
 
 /* ===================================
    Gallery Styles
@@ -1880,19 +1888,28 @@ button {
 }
 
 @media (max-width: 992px) {
-    .lightbox-prev, .lightbox-next {
+
+    .lightbox-prev,
+    .lightbox-next {
         width: 50px;
         height: 50px;
         font-size: 1.25rem;
     }
-    .lightbox-prev { left: 20px; }
-    .lightbox-next { right: 20px; }
+
+    .lightbox-prev {
+        left: 20px;
+    }
+
+    .lightbox-next {
+        right: 20px;
+    }
 }
 
 @media (max-width: 576px) {
     .lightbox {
         padding: var(--spacing-md);
     }
+
     .lightbox-close {
         top: 15px;
         right: 15px;
@@ -1900,17 +1917,26 @@ button {
         width: 40px;
         height: 40px;
     }
-    .lightbox-prev, .lightbox-next {
+
+    .lightbox-prev,
+    .lightbox-next {
         width: 45px;
         height: 45px;
         top: auto;
         bottom: 30px;
         transform: none;
     }
+
     .lightbox-prev:hover,
     .lightbox-next:hover {
         transform: scale(1.1);
     }
-    .lightbox-prev { left: 20%; }
-    .lightbox-next { right: 20%; }
+
+    .lightbox-prev {
+        left: 20%;
+    }
+
+    .lightbox-next {
+        right: 20%;
+    }
 }

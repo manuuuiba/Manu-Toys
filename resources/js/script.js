@@ -318,6 +318,7 @@ const products = [
     category: 'hot-wheels',
     name: 'Koenigsegg Jesko (2020)',
     isMostWanted: true,
+    isSoldOut: true,
     description: 'Blue Grey',
     images: ['resources/images/Productos/Hot Wheels/2020 KOENIGSEGG JESKO – Blue Grey – .jpeg']
   },
@@ -369,6 +370,7 @@ const products = [
     id: 2017,
     category: 'hot-wheels',
     name: 'Jaguar MK1',
+    isSoldOut: true,
     description: 'Blue Grey',
     images: ['resources/images/Productos/Hot Wheels/JAGUAR MK1 – Blue Grey –.jpeg']
   },
@@ -398,6 +400,7 @@ const products = [
     id: 2015,
     category: 'hot-wheels',
     name: 'Tesla Model S Plaid',
+    isSoldOut: true,
     description: 'Blue',
     images: ['resources/images/Productos/Hot Wheels/TESLA MODEL S PLAID BLUE.jpeg']
   },
@@ -619,9 +622,11 @@ function showSkeletons() {
 function createProductCard(product, index) {
   const card = document.createElement('div');
 
-  // Determine badge type and text
+  // Determine badge type and text (priority: sold out > new > most wanted > low stock)
   let badgeHTML = '';
-  if (product.isNew) {
+  if (product.isSoldOut) {
+    badgeHTML = '<span class="product-badge badge-sold-out">¡AGOTADO!</span>';
+  } else if (product.isNew) {
     badgeHTML = '<span class="product-badge badge-novedad">¡Novedad!</span>';
   } else if (product.isMostWanted) {
     badgeHTML = '<span class="product-badge badge-most-wanted">¡Más Buscado!</span>';
